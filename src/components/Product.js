@@ -3,7 +3,7 @@ import { StyleSheet, Text, Button, View, Alert } from 'react-native';
 
 
 
-export default class Main extends Component {
+export default class Product extends Component {
 
 
   state= {
@@ -14,9 +14,9 @@ export default class Main extends Component {
     amount: this.state.amount + 1
   })
 
-show() {
-  Alert.alert("You clicked Me!")
-}
+// show() {
+//   Alert.alert("You clicked Me!")
+// }
   render(){
     return (
       <View>

@@ -1,19 +1,36 @@
 import React, {Component } from 'react';
-import { StyleSheet, Text, Button, View, Alert } from 'react-native';
+import { ScrollView } from 'react-native';
+import Product from './Product';
 
-export default class Product extends Component {
+
+
+export default class ProductList extends Component {
+  state = {
+    products: []
+  }
+ componentDidMount() {
+   return fetch('http://demo0782917.mockable.io/mobiles')
+   .then((response) => response.json())
+   .then((responseJson) =>{
+     this.setState({products: responseJson})
+  //   console.log(responseJson);
+   })
+ }
+
   render() {
-
-
+    var productList = this.state.products.map(function(item) {
+      return (
+        <Product name = {item.name} key = {item.id}/>
+      )
+    })
     return(
-      <View>
-      <Product name= "Android"/>
-      <Product name= "Nokia"/>
-      <Product name="iPhone"/>
-      </View>
+      <ScrollView>
+      {productList}
+      </ScrollView>
 
 
     );
+
 
   }
 }
